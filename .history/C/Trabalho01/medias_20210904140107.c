@@ -32,7 +32,6 @@ void adicionar_aluno(struct Aluno alunos[], int pesos[], float medias_provas[]);
 void iniciar_medias_provas(float medias_provas[]);
 void relatorio_notas_provas(float medias_provas[]);
 void relatorio_notas_alunos(struct Aluno alunos[]);
-void sairMenu();
 
 int main()
 {
@@ -179,7 +178,15 @@ void menu_adicionar_aluno(struct Aluno alunos[], int pesos[], float medias_prova
 	imprimir("/******************************************/\n\n");
 	reset();
 	adicionar_aluno(alunos, pesos, medias_provas);
-	sairMenu();
+	imprimir("Aperte qualquer tecla");
+	vermelho();
+	imprimir(" ENTER ");
+	reset();
+	imprimir("para voltar ao menu de opções...");
+	while (getchar() != '\n')
+		;
+	getchar();
+	imprimir("\n\n");
 }
 
 void menu_relatorio_notas_alunos(struct Aluno alunos[])
@@ -191,7 +198,15 @@ void menu_relatorio_notas_alunos(struct Aluno alunos[])
 	imprimir("/******************************************/\n\n");
 	reset();
 	relatorio_notas_alunos(alunos);
-	sairMenu();
+	imprimir("\nAperte qualquer tecla");
+	vermelho();
+	imprimir(" ENTER ");
+	reset();
+	imprimir("para voltar ao menu de opções...");
+	while (getchar() != '\n')
+		;
+	getchar();
+	imprimir("\n\n");
 }
 
 void menu_relatorio_notas_provas(float medias_provas[])
@@ -203,7 +218,15 @@ void menu_relatorio_notas_provas(float medias_provas[])
 	imprimir("/******************************************/\n\n");
 	reset();
 	relatorio_notas_provas(medias_provas);
-	sairMenu();
+	imprimir("\n\nAperte qualquer tecla");
+	vermelho();
+	imprimir(" ENTER ");
+	reset();
+	imprimir("para voltar ao menu de opções...");
+	while (getchar() != '\n')
+		;
+	getchar();
+	imprimir("\n\n");
 }
 
 void adicionar_aluno(struct Aluno alunos[], int pesos[], float medias_provas[])
@@ -271,17 +294,4 @@ void relatorio_notas_alunos(struct Aluno alunos[])
 			printf("%d. Nome: %s. Média Final: %.2f\n", i + 1, alunos[i].nome, alunos[i].media_ponderada);
 		}
 	}
-}
-
-void sairMenu()
-{
-	imprimir("\n\nAperte qualquer tecla");
-	vermelho();
-	imprimir(" ENTER ");
-	reset();
-	imprimir("para voltar ao menu de opções...");
-	while (getchar() != '\n')
-		;
-	getchar();
-	imprimir("\n\n");
 }
