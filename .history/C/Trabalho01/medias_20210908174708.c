@@ -246,7 +246,9 @@ void relatorio_notas_provas(float medias_provas[])
 {
 	if (total_alunos == 0)
 	{
-		error_alunos();
+		vermelho();
+		printf("Nenhum aluno cadastrado no sistema.\n\n");
+		reset();
 	}
 	else
 	{
@@ -261,7 +263,9 @@ void relatorio_notas_alunos(struct Aluno alunos[])
 {
 	if (total_alunos == 0)
 	{
-		error_alunos();
+		vermelho();
+		printf("Nenhum aluno cadastrado no sistema.\n\n");
+		reset();
 	}
 	else
 	{

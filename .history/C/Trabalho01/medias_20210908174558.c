@@ -31,7 +31,7 @@ void adicionar_aluno(struct Aluno alunos[], int pesos[], float medias_provas[]);
 void iniciar_medias_provas(float medias_provas[]);
 void relatorio_notas_provas(float medias_provas[]);
 void relatorio_notas_alunos(struct Aluno alunos[]);
-void sair_menu();
+void sairMenu();
 
 int main()
 {
@@ -173,7 +173,7 @@ void menu_adicionar_aluno(struct Aluno alunos[], int pesos[], float medias_prova
 	printf("/******************************************/\n\n");
 	reset();
 	adicionar_aluno(alunos, pesos, medias_provas);
-	sair_menu();
+	sairMenu();
 }
 
 void menu_relatorio_notas_alunos(struct Aluno alunos[])
@@ -185,7 +185,7 @@ void menu_relatorio_notas_alunos(struct Aluno alunos[])
 	printf("/******************************************/\n\n");
 	reset();
 	relatorio_notas_alunos(alunos);
-	sair_menu();
+	sairMenu();
 }
 
 void menu_relatorio_notas_provas(float medias_provas[])
@@ -197,7 +197,7 @@ void menu_relatorio_notas_provas(float medias_provas[])
 	printf("/******************************************/\n\n");
 	reset();
 	relatorio_notas_provas(medias_provas);
-	sair_menu();
+	sairMenu();
 }
 
 void adicionar_aluno(struct Aluno alunos[], int pesos[], float medias_provas[])
@@ -246,7 +246,9 @@ void relatorio_notas_provas(float medias_provas[])
 {
 	if (total_alunos == 0)
 	{
-		error_alunos();
+		vermelho();
+		printf("Nenhum aluno cadastrado no sistema.\n\n");
+		reset();
 	}
 	else
 	{
@@ -261,7 +263,9 @@ void relatorio_notas_alunos(struct Aluno alunos[])
 {
 	if (total_alunos == 0)
 	{
-		error_alunos();
+		vermelho();
+		printf("Nenhum aluno cadastrado no sistema.\n\n");
+		reset();
 	}
 	else
 	{
@@ -272,7 +276,7 @@ void relatorio_notas_alunos(struct Aluno alunos[])
 	}
 }
 
-void sair_menu()
+void sairMenu()
 {
 	printf("\n\nAperte qualquer tecla");
 	vermelho();
@@ -283,11 +287,4 @@ void sair_menu()
 		;
 	getchar();
 	printf("\n\n");
-}
-
-void error_alunos()
-{
-	vermelho();
-	printf("Nenhum aluno cadastrado no sistema.\n\n");
-	reset();
 }
