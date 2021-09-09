@@ -32,6 +32,7 @@ void iniciar_medias_provas(float medias_provas[]);
 void relatorio_notas_provas(float medias_provas[]);
 void relatorio_notas_alunos(struct Aluno alunos[]);
 void sair_menu();
+void error_alunos(char mensagem[]);
 
 int main()
 {
@@ -111,12 +112,12 @@ void pegar_quantidade(char mensagem[], int *quantidade, int maximo, char mensage
 {
 	do
 	{
-		printf(mensagem);
+		printf("%s", mensagem);
 		scanf("%d", quantidade);
 		if (*quantidade < 0 || *quantidade >= maximo)
 		{
 			vermelho();
-			printf(mensagem_erro);
+			printf("%s", mensagem_erro);
 			reset();
 		}
 	} while (*quantidade < 0 || *quantidade >= maximo);
@@ -204,7 +205,7 @@ void adicionar_aluno(struct Aluno alunos[], int pesos[], float medias_provas[])
 {
 	if (total_alunos >= qtd_alunos)
 	{
-		error_alunos();
+		error_alunos("Quantidade máxima de alunos cadastrados.");
 	}
 	else
 	{
@@ -244,7 +245,7 @@ void relatorio_notas_provas(float medias_provas[])
 {
 	if (total_alunos == 0)
 	{
-		error_alunos();
+		error_alunos("Nenhum aluno cadastrado neste momento.");
 	}
 	else
 	{
@@ -259,7 +260,7 @@ void relatorio_notas_alunos(struct Aluno alunos[])
 {
 	if (total_alunos == 0)
 	{
-		error_alunos();
+		error_alunos("Nenhum aluno cadastrado neste momento.");
 	}
 	else
 	{
@@ -283,9 +284,9 @@ void sair_menu()
 	printf("\n\n");
 }
 
-void error_alunos()
+void error_alunos(char mensagem[])
 {
 	vermelho();
-	printf("Nenhum aluno cadastrado no sistema.\n\n");
+	printf("%s\n\n", mensagem);
 	reset();
 }
