@@ -264,7 +264,7 @@ void relatorio_notas_alunos(struct Aluno alunos[])
 	}
 	else
 	{
-		for (int i = 0; i < qtd_alunos; i++)
+		for (int i = 0; i < total_alunos; i++)
 		{
 			printf("%d. Nome: %s. Média Final: %.2f\n", i + 1, alunos[i].nome, alunos[i].media_ponderada);
 		}
