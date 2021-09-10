@@ -339,7 +339,7 @@ void checar_idade_aluno(Aluno alunos[])
 					vice_lider = lider;
 					lider = alunos[i];
 				}
-				else if (alunos[i].idade > vice_lider.idade && alunos[i].idade < lider.idade)
+				else if (alunos[i].idade > vice_lider.idade && alunos[i].idade <= lider.idade)
 				{
 					vice_lider = alunos[i];
 				}
