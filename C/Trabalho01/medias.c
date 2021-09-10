@@ -15,6 +15,7 @@ typedef struct
 	char nome[50];
 	float notas_provas[MAX_QTD_PROVAS];
 	float media_ponderada;
+	int idade;
 } Aluno;
 
 void vermelho();
@@ -33,6 +34,8 @@ void relatorio_notas_provas(float medias_provas[]);
 void relatorio_notas_alunos(Aluno alunos[]);
 void sair_menu();
 void error_alunos(char mensagem[]);
+void menu_lider_vice_lider(Aluno alunos[]);
+void checar_idade_aluno(Aluno alunos[]);
 
 int main()
 {
@@ -67,6 +70,9 @@ int main()
 			menu_relatorio_notas_provas(media_classe_provas);
 			break;
 		case 4:
+			menu_lider_vice_lider(alunos);
+			break;
+		case 5:
 			break;
 
 		default:
@@ -74,7 +80,7 @@ int main()
 			fflush(stdin);
 			scanf("%c", &ch);
 		}
-	} while (opcao_menu != 4);
+	} while (opcao_menu != 5);
 
 	return 0;
 }
@@ -157,7 +163,8 @@ void menu()
 	printf("1. Adicionar um novo aluno a lista.\n");
 	printf("2. Imprimir Relatório de Notas Alunos.\n");
 	printf("3. Imprimir média das provas.\n");
-	printf("4. Sair\n\n");
+	printf("4. Imprimir líder e vice líder da classe.\n");
+	printf("5. Sair\n\n");
 	printf("/*****************************************/\n\n");
 	reset();
 	printf("Digite a opção desejada: ");
@@ -219,6 +226,10 @@ void adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[])
 		while (getchar() != '\n')
 			;
 		scanf("%50[0-9a-zA-Z ]", alunos[total_alunos].nome);
+		while (getchar() != '\n')
+			;
+		printf("Digite a idade do novo aluno: ");
+		scanf("%d", &alunos[total_alunos].idade);
 		for (int i = 0; i < qtd_provas; i++)
 		{
 			printf("Digite a nota da %dº prova: ", i + 1);
@@ -228,7 +239,7 @@ void adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[])
 			alunos[total_alunos].media_ponderada += (alunos[total_alunos].notas_provas[i] * pesos[i]) / peso_total_provas;
 			medias_provas[i] += alunos[total_alunos].notas_provas[i] / qtd_alunos;
 		}
-		printf("\nO aluno de nome %s de média ponderada %.2f foi adicionado com sucesso.\n\n", alunos[total_alunos].nome, alunos[total_alunos].media_ponderada);
+		printf("\nO aluno de nome %s, e idade %d de média ponderada %.2f foi adicionado com sucesso.\n\n", alunos[total_alunos].nome, alunos[total_alunos].idade, alunos[total_alunos].media_ponderada);
 		total_alunos++;
 	}
 }
@@ -289,4 +300,51 @@ void error_alunos(char mensagem[])
 	vermelho();
 	printf("%s\n\n", mensagem);
 	reset();
+}
+
+void menu_lider_vice_lider(Aluno alunos[])
+{
+	system("clear");
+	verde();
+	printf("/******************************************/\n");
+	printf("/*           LIDER E VICE LIDER           */\n");
+	printf("/******************************************/\n\n");
+	reset();
+	checar_idade_aluno(alunos);
+	sair_menu();
+}
+
+void checar_idade_aluno(Aluno alunos[])
+{
+	Aluno lider;
+	Aluno vice_lider;
+	lider.idade = vice_lider.idade = -1;
+
+	if (total_alunos == 0)
+	{
+		error_alunos("Nenhum aluno cadastrado neste momento.");
+	}
+	else
+	{
+		if (total_alunos == 1)
+		{
+			printf("O líder da turma é %s. Não temos um vice líder ainda.", alunos[total_alunos - 1].nome);
+		}
+		else
+		{
+			for (int i = 0; i < total_alunos; i++)
+			{
+				if (alunos[i].idade > lider.idade)
+				{
+					vice_lider = lider;
+					lider = alunos[i];
+				}
+				else if (alunos[i].idade > vice_lider.idade && alunos[i].idade < lider.idade)
+				{
+					vice_lider = alunos[i];
+				}
+			}
+			printf("Líder da turma é %s. Vice líder é %s", lider.nome, vice_lider.nome);
+		}
+	}
 }
