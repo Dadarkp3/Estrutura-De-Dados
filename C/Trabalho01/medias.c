@@ -10,13 +10,6 @@ int qtd_alunos, qtd_provas, opcao_menu = -1, peso_total_provas = 0, total_alunos
 char ch;
 float media_aritmetica;
 
-typedef struct
-{
-	char nome[50];
-	float notas_provas[MAX_QTD_PROVAS];
-	float media_ponderada;
-} Aluno;
-
 void vermelho();
 void verde();
 void reset();
@@ -24,13 +17,13 @@ void abertura();
 void pegar_quantidade(char mensagem[], int *quantidade, int maximo, char mensagem_erro[]);
 void pegar_peso_provas(int pesos[], int tamanho_vetor);
 void menu();
-void menu_adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[]);
-void menu_relatorio_notas_alunos(Aluno alunos[]);
+void menu_adicionar_aluno(float media_ponderada_alunos[], int pesos[], float medias_provas[]);
+void menu_relatorio_notas_alunos(float media_ponderada_alunos[]);
 void menu_relatorio_notas_provas(float medias_provas[]);
-void adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[]);
+void adicionar_aluno(float media_ponderada_alunos[], int pesos[], float medias_provas[]);
 void iniciar_medias_provas(float medias_provas[]);
 void relatorio_notas_provas(float medias_provas[]);
-void relatorio_notas_alunos(Aluno alunos[]);
+void relatorio_notas_alunos(float media_ponderada_alunos[]);
 void sair_menu();
 void error_alunos(char mensagem[]);
 
@@ -46,7 +39,7 @@ int main()
 	float media_classe_provas[qtd_provas];
 	pegar_peso_provas(pesos_provas, qtd_provas);
 
-	Aluno alunos[qtd_alunos];
+	float media_ponderada_alunos[qtd_alunos];
 
 	iniciar_medias_provas(media_classe_provas);
 
@@ -56,11 +49,11 @@ int main()
 		switch (opcao_menu)
 		{
 		case 1:
-			menu_adicionar_aluno(alunos, pesos_provas, media_classe_provas);
+			menu_adicionar_aluno(media_ponderada_alunos, pesos_provas, media_classe_provas);
 			break;
 
 		case 2:
-			menu_relatorio_notas_alunos(alunos);
+			menu_relatorio_notas_alunos(media_ponderada_alunos);
 			break;
 
 		case 3:
@@ -165,7 +158,7 @@ void menu()
 	scanf("%d", &opcao_menu);
 }
 
-void menu_adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[])
+void menu_adicionar_aluno(float media_ponderada_alunos[], int pesos[], float medias_provas[])
 {
 	system("clear");
 	verde();
@@ -173,11 +166,11 @@ void menu_adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[])
 	printf("/*            ADICIONAR ALUNO             */\n");
 	printf("/******************************************/\n\n");
 	reset();
-	adicionar_aluno(alunos, pesos, medias_provas);
+	adicionar_aluno(media_ponderada_alunos, pesos, medias_provas);
 	sair_menu();
 }
 
-void menu_relatorio_notas_alunos(Aluno alunos[])
+void menu_relatorio_notas_alunos(float media_ponderada_alunos[])
 {
 	system("clear");
 	verde();
@@ -185,7 +178,7 @@ void menu_relatorio_notas_alunos(Aluno alunos[])
 	printf("/*            NOTAS DOS ALUNOS            */\n");
 	printf("/******************************************/\n\n");
 	reset();
-	relatorio_notas_alunos(alunos);
+	relatorio_notas_alunos(media_ponderada_alunos);
 	sair_menu();
 }
 
@@ -201,7 +194,7 @@ void menu_relatorio_notas_provas(float medias_provas[])
 	sair_menu();
 }
 
-void adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[])
+void adicionar_aluno(float media_ponderada_alunos[], int pesos[], float medias_provas[])
 {
 	if (total_alunos >= qtd_alunos)
 	{
@@ -215,20 +208,15 @@ void adicionar_aluno(Aluno alunos[], int pesos[], float medias_provas[])
 		printf("/*          ADICIONAR NOVO ALUNO          */\n");
 		printf("/******************************************/\n\n");
 		reset();
-		printf("Digite o nome do novo aluno: ");
-		while (getchar() != '\n')
-			;
-		scanf("%50[0-9a-zA-Z ]", alunos[total_alunos].nome);
 		for (int i = 0; i < qtd_provas; i++)
 		{
+			float prova;
 			printf("Digite a nota da %dº prova: ", i + 1);
-			while (getchar() != '\n')
-				;
-			scanf("%f", &alunos[total_alunos].notas_provas[i]);
-			alunos[total_alunos].media_ponderada += (alunos[total_alunos].notas_provas[i] * pesos[i]) / peso_total_provas;
-			medias_provas[i] += alunos[total_alunos].notas_provas[i] / qtd_alunos;
+			scanf("%f", &prova);
+			media_ponderada_alunos[total_alunos] += (prova * (float)pesos[i]) / peso_total_provas;
+			medias_provas[i] += prova / qtd_alunos;
 		}
-		printf("\nO aluno de nome %s de média ponderada %.2f foi adicionado com sucesso.\n\n", alunos[total_alunos].nome, alunos[total_alunos].media_ponderada);
+		printf("\nO aluno %d de média ponderada %.2f foi adicionado com sucesso.\n\n", total_alunos + 1, media_ponderada_alunos[total_alunos]);
 		total_alunos++;
 	}
 }
@@ -256,7 +244,7 @@ void relatorio_notas_provas(float medias_provas[])
 	}
 }
 
-void relatorio_notas_alunos(Aluno alunos[])
+void relatorio_notas_alunos(float media_ponderada_alunos[])
 {
 	if (total_alunos == 0)
 	{
@@ -266,7 +254,7 @@ void relatorio_notas_alunos(Aluno alunos[])
 	{
 		for (int i = 0; i < qtd_alunos; i++)
 		{
-			printf("%d. Nome: %s. Média Final: %.2f\n", i + 1, alunos[i].nome, alunos[i].media_ponderada);
+			printf("%d. Aluno id: %d. Média Final: %.2f\n", i + 1, i + 1, media_ponderada_alunos[i]);
 		}
 	}
 }
