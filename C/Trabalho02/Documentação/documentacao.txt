@@ -1,0 +1,6 @@
+ Sabendo que um empresa possui 200 funcionários cujos dados armazenados são nome, idade, função e salário.
+Pretende-se dar aumento a uma categoria das diversas funções existentes na empresa.
+
+Apresente uma solução a partir dos conhecimentos adquiridos até o momento.
+
+pode ser usados também as estruturas básicas de algoritmo.
