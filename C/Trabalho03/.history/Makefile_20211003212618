@@ -1,0 +1,2 @@
+output: main.o auxiliar.o
+	gcc main.o auxiliar.o -o output

@@ -1,0 +1,11 @@
+output: main.o auxiliar.o
+	gcc main.o auxiliar.o -o main
+
+main.o: main.c
+	gcc -c main.c
+
+auxiliar.o: auxiliar.c auxiliar.h
+	gcc -c auxiliar.c
+
+clean:
+	rm *.o main 
