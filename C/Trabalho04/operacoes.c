@@ -10,7 +10,12 @@ void menu_iniciar_sala(Aluno **alunos, int * quantidade_cadeiras_disponiveis)
     printf("/*        CRIAR NOVA SALA DE AULA         */\n");
     printf("/******************************************/\n\n");
     reset();
+    iniciar_sala(&(*alunos), quantidade_cadeiras_disponiveis);
+    sair_sub_menu();
+}
 
+void iniciar_sala(Aluno **alunos, int * quantidade_cadeiras_disponiveis)
+{
     do
     {
         printf("Digite a quantidade inicial de cadeiras disponíveis: ");
@@ -32,8 +37,6 @@ void menu_iniciar_sala(Aluno **alunos, int * quantidade_cadeiras_disponiveis)
         }
     }
     while(*quantidade_cadeiras_disponiveis < 0 || *quantidade_cadeiras_disponiveis >= MAX_ALUNOS);
-
-    sair_sub_menu();
 }
 
 void menu_adicionar_novo_aluno(Aluno ** alunos, int * quantidade_cadeiras_disponiveis, int * quantidade_alunos_cadastrados)
@@ -44,6 +47,12 @@ void menu_adicionar_novo_aluno(Aluno ** alunos, int * quantidade_cadeiras_dispon
     printf("/*           ADICIONAR ALUNO NOVO         */\n");
     printf("/******************************************/\n\n");
     reset();
+    adicionar_novo_aluno(&(*alunos), quantidade_cadeiras_disponiveis, quantidade_alunos_cadastrados);
+    sair_sub_menu();
+}
+
+void adicionar_novo_aluno(Aluno ** alunos, int * quantidade_cadeiras_disponiveis, int * quantidade_alunos_cadastrados)
+{
 
     if(*quantidade_alunos_cadastrados >= MAX_ALUNOS - 1)
     {
@@ -53,6 +62,7 @@ void menu_adicionar_novo_aluno(Aluno ** alunos, int * quantidade_cadeiras_dispon
     {
         if(*quantidade_alunos_cadastrados >= *quantidade_cadeiras_disponiveis)
         {
+            printf("Número de estudantes é igual ao número de cadeiras, porém abaixo da quantidade máxima da sala, iremos adicionar automaticamente mais uma cadeira a sua sala. Se desejar pode redimencionar a quantidade de cadeiras disponíveis no menu anterior.\n");
             *quantidade_cadeiras_disponiveis = *quantidade_cadeiras_disponiveis + 1;
             *alunos = realloc(*alunos, *quantidade_cadeiras_disponiveis * sizeof(Aluno));
 
@@ -66,8 +76,6 @@ void menu_adicionar_novo_aluno(Aluno ** alunos, int * quantidade_cadeiras_dispon
         printf("\nO aluno %s foi adicionado com sucesso.\n", (*alunos)[*quantidade_alunos_cadastrados].nome);
         *quantidade_alunos_cadastrados = *quantidade_alunos_cadastrados + 1;
     }
-
-    sair_sub_menu();
 }
 
 void menu_modificar_quantidade_cadeiras(Aluno ** alunos, int * quantidade_cadeiras_disponiveis, int * quantidade_alunos_cadastrados)
@@ -78,7 +86,12 @@ void menu_modificar_quantidade_cadeiras(Aluno ** alunos, int * quantidade_cadeir
     printf("/*      MODIFICAR QUANTIDADE CADEIRAS     */\n");
     printf("/******************************************/\n\n");
     reset();
+    modificar_quantidade_cadeiras(&(*alunos), quantidade_cadeiras_disponiveis, quantidade_alunos_cadastrados);
+    sair_sub_menu();
+}
 
+void modificar_quantidade_cadeiras(Aluno ** alunos, int * quantidade_cadeiras_disponiveis, int * quantidade_alunos_cadastrados)
+{
     int nova_quantidade_cadeiras = -1;
     do
     {
@@ -101,8 +114,6 @@ void menu_modificar_quantidade_cadeiras(Aluno ** alunos, int * quantidade_cadeir
     }
     while(nova_quantidade_cadeiras < 0 || nova_quantidade_cadeiras >= MAX_ALUNOS);
     printf("A nova quantidade de cadeiras disponíveis é de %d cadeiras.\n", *quantidade_cadeiras_disponiveis);
-
-    sair_sub_menu();
 }
 
 void menu_libera_sala(Aluno ** alunos, int * quantidade_cadeiras_disponiveis, int * quantidade_alunos_cadastrados)
@@ -113,12 +124,18 @@ void menu_libera_sala(Aluno ** alunos, int * quantidade_cadeiras_disponiveis, in
     printf("/*           LIBERAR SALA DE AULA           */\n");
     printf("/******************************************/\n\n");
     reset();
+    liberar_sala(&(*alunos), quantidade_cadeiras_disponiveis, quantidade_alunos_cadastrados);
+    printf("A sala foi liberada, não temos mais cadeiras disponíveis nem alunos cadastrados.\n");
+    sair_sub_menu();
+}
+
+void liberar_sala(Aluno ** alunos, int * quantidade_cadeiras_disponiveis, int * quantidade_alunos_cadastrados)
+{
     free(*alunos);
     *alunos = NULL;
     *quantidade_alunos_cadastrados = 0;
     *quantidade_cadeiras_disponiveis = 0;
     printf("A sala foi liberada, não temos mais cadeiras disponíveis nem alunos cadastrados.\n");
-    sair_sub_menu();
 }
 
 void imprimir(Aluno * alunos, int quantidade_alunos_cadastrados)
@@ -129,9 +146,13 @@ void imprimir(Aluno * alunos, int quantidade_alunos_cadastrados)
     printf("/*             LISTA DE ALUNOS            */\n");
     printf("/******************************************/\n\n");
     reset();
-    for(int i = 0; i < quantidade_alunos_cadastrados; i++)
-    {
-        printf("Nome: %s, Idade: %d\n", alunos[i].nome, alunos[i].idade);
+    if(quantidade_alunos_cadastrados <= 0){
+        mensagem_error_geral("Nenhum aluno cadastrado no momento.");
+    }else{
+        for(int i = 0; i < quantidade_alunos_cadastrados; i++)
+        {
+            printf("Nome: %s, Idade: %d\n", alunos[i].nome, alunos[i].idade);
+        }
     }
     sair_sub_menu();
 }

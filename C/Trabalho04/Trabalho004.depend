@@ -20,3 +20,24 @@
 	"utils.h"
 	"operacoes.h"
 
+1633542811 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/utils.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+
+1633541263 /home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/utils.h
+
+1633546178 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/main.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+	"operacoes.h"
+
+1633546773 /home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/operacoes.h
+
+1633546725 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/operacoes.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+	"operacoes.h"
+

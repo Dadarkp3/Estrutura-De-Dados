@@ -10,6 +10,7 @@ int main()
     Aluno *alunos = NULL;
     abertura();
     menu_iniciar_sala(&alunos, &quantidade_cadeiras_disponiveis);
+    printf("%d", quantidade_cadeiras_disponiveis);
     do
     {
         menu(&opcao_menu);
