@@ -44,7 +44,7 @@ void menu(int *opcao_menu)
     printf("2. Modificar a quantidade disponível de cadeiras.\n");
     printf("3. Remover a sala inteira.\n");
     printf("4. Imprimir Lista de Alunos.\n");
-    printf("4. Sair\n\n");
+    printf("5. Sair\n\n");
     printf("/*****************************************/\n\n");
     reset();
     printf("Digite a opção desejada: ");
@@ -54,21 +54,21 @@ void menu(int *opcao_menu)
 
 void mensagem_error_geral(char mensagem[])
 {
-	vermelho();
-	printf("%s\n\n", mensagem);
-	reset();
+    vermelho();
+    printf("%s\n\n", mensagem);
+    reset();
 }
 
 void sair_sub_menu()
 {
-	printf("\n\nAperte qualquer tecla");
-	vermelho();
-	printf(" ENTER ");
-	reset();
-	printf("para voltar ao menu de opções...");
-	while (getchar() != '\n')
-		;
-	getchar();
-	printf("\n\n");
-	system("clear");
+    printf("\n\nAperte qualquer tecla");
+    vermelho();
+    printf(" ENTER ");
+    reset();
+    printf("para voltar ao menu de opções...");
+    while (getchar() != '\n')
+        ;
+    getchar();
+    printf("\n\n");
+    system("clear");
 }

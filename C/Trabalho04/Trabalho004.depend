@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1633541250 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho004/utils.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+
+1633541263 /home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho004/utils.h
+
+1633542721 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho004/main.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+	"operacoes.h"
+
+1633542806 /home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho004/operacoes.h
+
+1633542673 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho004/operacoes.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+	"operacoes.h"
+
