@@ -3,18 +3,18 @@
 #include "utils.h"
 #include "operacoes.h"
 
-void menu_iniciar_sala(Aluno **alunos, int * quantidade_cadeiras_disponiveis)
+void menu_iniciar_sala(Aluno * alunos, int * quantidade_cadeiras_disponiveis)
 {
     amarelo();
     printf("/******************************************/\n");
     printf("/*        CRIAR NOVA SALA DE AULA         */\n");
     printf("/******************************************/\n\n");
     reset();
-    iniciar_sala(&alunos, quantidade_cadeiras_disponiveis);
+    iniciar_sala(alunos, quantidade_cadeiras_disponiveis);
     sair_sub_menu();
 }
 
-void iniciar_sala(Aluno **alunos, int * quantidade_cadeiras_disponiveis)
+void iniciar_sala(Aluno * alunos, int * quantidade_cadeiras_disponiveis)
 {
     do
     {
@@ -27,7 +27,7 @@ void iniciar_sala(Aluno **alunos, int * quantidade_cadeiras_disponiveis)
         }
         else
         {
-            *alunos = (Aluno *) malloc(*quantidade_cadeiras_disponiveis * sizeof(Aluno));
+            alunos = (Aluno *) malloc(*quantidade_cadeiras_disponiveis * sizeof(Aluno));
             printf("\nUma nova sala foi criada com uma quantidade inicial de ");
             amarelo();
             printf("%d cadeiras ", *quantidade_cadeiras_disponiveis);
@@ -62,9 +62,9 @@ void adicionar_aluno(Aluno * alunos, int * quantidade_cadeiras_disponiveis, int 
         if(*quantidade_alunos_cadastrados >= *quantidade_cadeiras_disponiveis)
         {
             *quantidade_cadeiras_disponiveis = *quantidade_cadeiras_disponiveis + 1;
-            Alunos *alunos_temp = realloc(alunos, *quantidade_cadeiras_disponiveis * sizeof(Aluno));
+            Aluno *alunos_temp = realloc(alunos, *quantidade_cadeiras_disponiveis * sizeof(Aluno));
             if(alunos_temp){
-                *alunos = alunos_temp;
+                alunos = alunos_temp;
             }
         }
         printf("Digite o nome do novo aluno: ");

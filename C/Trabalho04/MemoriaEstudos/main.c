@@ -22,7 +22,7 @@ int main()
             menu_modificar_quantidade_cadeiras(alunos, &quantidade_cadeiras_disponiveis, &quantidade_alunos_cadastrados);
             break;
         case 3:
-            menu_libera_sala(alunos, &quantidade_cadeiras_disponiveis, &quantidade_alunos_cadastrados)
+            menu_libera_sala(alunos, &quantidade_cadeiras_disponiveis, &quantidade_alunos_cadastrados);
             break;
 
         default:

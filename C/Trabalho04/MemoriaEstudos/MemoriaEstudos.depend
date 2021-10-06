@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1633488698 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/MemoriaEstudos/main.c
+1633491972 source:/home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/MemoriaEstudos/main.c
 	<stdio.h>
 	<stdlib.h>
 	"utils.h"
@@ -23,5 +23,5 @@
 	"utils.h"
 	"operacoes.h"
 
-1633488686 /home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/MemoriaEstudos/operacoes.h
+1633491896 /home/daiane-silva/Documents/Estudos/Estudos-C/Estrutura-De-Dados/C/Trabalho04/MemoriaEstudos/operacoes.h
 
