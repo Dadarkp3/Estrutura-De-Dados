@@ -1,0 +1,3 @@
+/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/cmake-build-debug/CMakeFiles/Trabalho05.dir

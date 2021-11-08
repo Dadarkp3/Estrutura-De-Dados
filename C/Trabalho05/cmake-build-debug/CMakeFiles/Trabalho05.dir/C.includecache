@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/main.c
+stdio.h
+-
+stdlib.h
+-
+
