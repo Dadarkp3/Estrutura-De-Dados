@@ -11,44 +11,44 @@ struct Node{
 };
 typedef struct Node node;
 
-int size;
 
-void start(node *queue);
+void start(node *queue, int * size);
 int isEmpty(node *queue);
 node *alocate();
-void add(node *queue);
-void removeNode(node *queue);
+void add(node *queue, int * size);
+void removeNode(node *queue, int * size);
 void freeNode(node *queue);
 
 
 
 int main(void)
 {
+    int size;
     node *queue = (node *) malloc(sizeof(node));
     if(!queue){
         printf("No memory available.\n");
         exit(1);
     }else{
-        start(queue);
+        start(queue, &size);
         int n;
         int selection;
         scanf("%d", &n);
         for (int i = 0; i < n; ++i) {
             scanf("%d", &selection);
             if(selection == 1){
-                add(queue);
+                add(queue, &size);
             }else if(selection == 2){
-                removeNode(queue);
+                removeNode(queue, &size);
             }
         }
         free(queue);
     }
 }
 
-void start(node *queue)
+void start(node *queue, int * size)
 {
     queue->next = NULL;
-    size = 0;
+    *size = 0;
 }
 
 int isEmpty(node *queue)
@@ -72,7 +72,7 @@ node *alocate()
     }
 }
 
-void add(node *queue)
+void add(node *queue, int *size)
 {
     node *new = alocate();
     new->next = NULL;
@@ -84,10 +84,10 @@ void add(node *queue)
         while(tmp->next != NULL) tmp = tmp->next;
         tmp->next = new;
     }
-    size++;
+    (*size)++;
 }
 
-void removeNode(node *queue){
+void removeNode(node *queue, int * size){
     if(queue->next == NULL){
         printf("Lista Vazia\n");
     }else{
@@ -95,7 +95,7 @@ void removeNode(node *queue){
         queue->next = tmp->next;
         printf("%s\n", tmp->title);
         freeNode(tmp);
-        size--;
+        (*size)--;
     }
 }
 
