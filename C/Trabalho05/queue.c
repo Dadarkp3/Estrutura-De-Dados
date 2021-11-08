@@ -11,9 +11,9 @@ void start(node ** queue, int * size)
     *size = 0;
 }
 
-int isEmpty(node **queue)
+int isEmpty(node *queue)
 {
-    return (*queue)->next == NULL;
+    return queue->next == NULL;
 }
 
 
@@ -37,7 +37,7 @@ void add(node ** queue, int *size)
     node *new = alocate();
     new->next = NULL;
 
-    if(isEmpty(queue))
+    if(isEmpty(*queue))
         (*queue)->next = new;
     else{
         node *tmp = (*queue)->next;
@@ -54,13 +54,13 @@ void removeNode(node ** queue, int * size){
         node *tmp = (*queue)->next;
         (*queue)->next = tmp->next;
         printf("%s\n", tmp->title);
-        freeNode(&tmp);
+        freeNode(&(tmp));
         (*size)--;
     }
 }
 
 void freeNode(node ** queue){
-    if(!isEmpty(queue)){
+    if(!isEmpty(*queue)){
         node *nextNode,
                 *nodeInPlace;
 

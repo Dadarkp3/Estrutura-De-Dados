@@ -6,7 +6,7 @@ typedef struct Node node;
 
 
 void start(node ** queue, int * size);
-int isEmpty(node ** queue);
+int isEmpty(node * queue);
 node *alocate();
 void add(node ** queue, int * size);
 void removeNode(node ** queue, int * size);
