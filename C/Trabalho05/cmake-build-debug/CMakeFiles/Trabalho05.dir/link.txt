@@ -1,1 +1,1 @@
-/Library/Developer/CommandLineTools/usr/bin/cc -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.0.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/Trabalho05.dir/main.c.o -o Trabalho05 
+/Library/Developer/CommandLineTools/usr/bin/cc -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.0.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/Trabalho05.dir/main.c.o CMakeFiles/Trabalho05.dir/queue.c.o -o Trabalho05 

@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/main.c" "/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/cmake-build-debug/CMakeFiles/Trabalho05.dir/main.c.o"
+  "/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/queue.c" "/Users/daianesilva/Documents/estudos/Estrutura-De-Dados/C/Trabalho05/cmake-build-debug/CMakeFiles/Trabalho05.dir/queue.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
